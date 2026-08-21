@@ -74,7 +74,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateToContact }) => {
       {/* Hero Section */}
       <section className="w-full max-w-[1200px] mx-auto px-5 md:px-20 py-12 md:py-20 flex flex-col gap-6 relative">
         <h1 className="font-sans-editorial text-3xl md:text-6xl font-semibold text-[#141413] tracking-tight max-w-[95%] md:max-w-[90%] leading-[1.15]">
-          Aceleración Empresarial B2B:<br />
+          Aceleración Empresarial:<br />
           <span className="text-[#8c5dd9]">Fondos, Tecnología y Marketing</span>
         </h1>
         <p className="font-serif text-lg md:text-xl text-[#4a4452] max-w-[95%] md:max-w-[80%] leading-relaxed">
@@ -86,7 +86,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateToContact }) => {
             href="#services"
             className="inline-flex items-center justify-center bg-[#8c5dd9] text-[#faf9f5] px-6 py-3.5 rounded font-sans-editorial text-xs uppercase tracking-wider font-semibold hover:bg-[#7242be] transition-colors cursor-pointer text-center"
           >
-            Explorar Servicios B2B
+            Explorar Servicios
           </a>
           <button
             onClick={() => handleStartConsultation()}
@@ -110,7 +110,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateToContact }) => {
         </div>
       </section>
 
-      {/* B2B Services Pillars Section */}
+      {/* Services Pillars Section */}
       <section className="w-full bg-[#f6f3f1] border-y border-[#e8e6dc] py-16 md:py-24 animate-in fade-in duration-500" id="services">
         <div className="max-w-[1200px] mx-auto px-5 md:px-20">
           <div className="text-center mb-12">
@@ -118,7 +118,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateToContact }) => {
               Soluciones Corporativas
             </span>
             <h2 className="font-sans-editorial text-3xl md:text-4xl font-medium text-[#141413] mt-2">
-              Nuestros Pilares de Servicios B2B
+              Nuestros Pilares de Servicios
             </h2>
             <p className="font-serif text-base text-[#4a4452] mt-4 max-w-2xl mx-auto leading-relaxed">
               Diseñamos soluciones integrales para potenciar su empresa en cada etapa de su ciclo de vida comercial y tecnológico.
