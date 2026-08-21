@@ -7,7 +7,6 @@ import {
   ArrowRight,
   Sparkles,
   ChevronRight,
-  ShieldCheck,
   Coins,
   Code,
   Target
@@ -22,8 +21,6 @@ interface HomeViewProps {
 
 export const HomeView: React.FC<HomeViewProps> = ({ onNavigateToContact }) => {
   const [selectedCategory, setSelectedCategory] = useState<CategoryInfo | null>(null);
-  const [simulatorStep, setSimulatorStep] = useState<number>(0);
-  const [answers, setAnswers] = useState<{ pymeType?: string; objective?: string; urgency?: string }>({});
 
   const getCategoryIcon = (iconName: string) => {
     switch (iconName) {
@@ -264,133 +261,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateToContact }) => {
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      {/* Interactive Quick Diagnostic Simulator */}
-      <section className="w-full bg-[#f6f3f1] border-y border-[#e8e6dc] py-16 md:py-20" id="evaluator">
-        <div className="max-w-[900px] mx-auto px-5 md:px-8">
-          <div className="text-center mb-8">
-            <span className="font-sans-editorial text-xs uppercase tracking-widest text-[#7242be] font-semibold">
-              Herramienta Interactiva
-            </span>
-            <h2 className="font-sans-editorial text-2xl md:text-3xl font-medium text-[#141413] mt-2">
-              Evaluador Rápido de Elegibilidad
-            </h2>
-            <p className="font-serif text-sm md:text-base text-[#4a4452] mt-2 max-w-lg mx-auto">
-              Descubra en 3 pasos si su empresa califica para fondos no reembolsables de ProInnova, Startup Perú o Concytec.
-            </p>
-          </div>
-
-          <div className="bg-[#faf9f5] border border-[#e8e6dc] rounded-lg p-6 md:p-8 shadow-sm">
-            {simulatorStep === 0 && (
-              <div className="space-y-5">
-                <p className="font-sans-editorial text-xs font-semibold text-[#8c5dd9] uppercase tracking-wider">
-                  Paso 1 de 3: Antigüedad y RUC
-                </p>
-                <h3 className="font-sans-editorial text-lg font-medium text-[#141413]">
-                  ¿Cuánto tiempo tiene constituida su empresa o startup?
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                  {[
-                    { id: 'early', label: 'Menos de 1 año (Idea / Prototipo)' },
-                    { id: 'mid', label: 'De 1 a 3 años (En tracción / Facturando)' },
-                    { id: 'established', label: 'Más de 3 años (Consolidada)' }
-                  ].map((opt) => (
-                    <button
-                      key={opt.id}
-                      onClick={() => {
-                        setAnswers({ ...answers, pymeType: opt.label });
-                        setSimulatorStep(1);
-                      }}
-                      className="text-left p-4 border border-[#e8e6dc] rounded hover:border-[#8c5dd9] hover:bg-[#faf9f5] transition-all font-sans-editorial text-sm text-[#141413] focus:outline-none"
-                    >
-                      {opt.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {simulatorStep === 1 && (
-              <div className="space-y-5">
-                <p className="font-sans-editorial text-xs font-semibold text-[#8c5dd9] uppercase tracking-wider">
-                  Paso 2 de 3: Objetivo Principal
-                </p>
-                <h3 className="font-sans-editorial text-lg font-medium text-[#141413]">
-                  ¿Cuál es el objetivo primordial del proyecto a financiar?
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  {[
-                    { id: 'tech', label: 'Digitalización y Software (ERP, E-commerce, Apps)' },
-                    { id: 'iso', label: 'Certificaciones de Calidad (ISO 9001, HACCP)' },
-                    { id: 'innov', label: 'Investigación & Desarrollo de Nuevo Producto' },
-                    { id: 'green', label: 'Eficiencia Verde / Sostenibilidad / Residuos' }
-                  ].map((opt) => (
-                    <button
-                      key={opt.id}
-                      onClick={() => {
-                        setAnswers({ ...answers, objective: opt.label });
-                        setSimulatorStep(2);
-                      }}
-                      className="text-left p-4 border border-[#e8e6dc] rounded hover:border-[#8c5dd9] transition-all font-sans-editorial text-sm text-[#141413] focus:outline-none"
-                    >
-                      {opt.label}
-                    </button>
-                  ))}
-                </div>
-                <button
-                  onClick={() => setSimulatorStep(0)}
-                  className="text-xs font-sans-editorial text-[#4a4452] underline mt-2"
-                >
-                  ← Volver al paso anterior
-                </button>
-              </div>
-            )}
-
-            {simulatorStep === 2 && (
-              <div className="space-y-5">
-                <div className="flex items-center gap-2 text-[#516439]">
-                  <ShieldCheck className="w-6 h-6" />
-                  <span className="font-sans-editorial text-sm font-semibold uppercase tracking-wider">
-                    Diagnóstico Preliminar Favorable
-                  </span>
-                </div>
-                <h3 className="font-sans-editorial text-xl font-medium text-[#141413]">
-                  Su empresa presenta alto índice de elegibilidad técnica
-                </h3>
-                <div className="bg-[#faf9f5] border-l-4 border-[#788c5d] p-4 font-serif text-sm text-[#4a4452] space-y-2">
-                  <p>
-                    <strong>Perfil Evaluado:</strong> {answers.pymeType}
-                  </p>
-                  <p>
-                    <strong>Enfoque Estratégico:</strong> {answers.objective}
-                  </p>
-                  <p className="text-xs text-[#141413] font-sans-editorial font-medium pt-1">
-                    ✓ Disponible para subsidio no reembolsable con cofinanciamiento del 50% al 75%.
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                  <button
-                    onClick={() => handleStartConsultation(`Diagnóstico: ${answers.objective} (${answers.pymeType})`)}
-                    className="bg-[#8c5dd9] text-[#faf9f5] px-6 py-3 rounded font-sans-editorial text-xs uppercase tracking-wider font-semibold hover:bg-[#7242be] transition-colors flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    <span>Completar Solicitud con estos datos</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => {
-                      setAnswers({});
-                      setSimulatorStep(0);
-                    }}
-                    className="border border-[#e8e6dc] text-[#4a4452] px-4 py-3 rounded font-sans-editorial text-xs uppercase tracking-wider hover:bg-[#e8e6dc] transition-colors"
-                  >
-                    Reiniciar
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
         </div>
       </section>
 

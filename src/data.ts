@@ -18,7 +18,7 @@ export const SERVICES: ServiceInfo[] = [
       'Capital 100% no reembolsable (sin deuda ni acciones)',
       'Acompañamiento integral hasta la rendición final'
     ],
-    ctaText: 'Simular Elegibilidad',
+    ctaText: 'Ver Categorías de Fondos',
     prefillValue: 'Consultoría Fondos No Reembolsables (PYMES y Startups).'
   },
   {
