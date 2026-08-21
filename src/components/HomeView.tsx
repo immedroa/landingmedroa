@@ -11,7 +11,7 @@ import {
   Code,
   Target
 } from 'lucide-react';
-import { CATEGORIES, METHOD_STEPS, HERO_IMAGE_URL, SERVICES } from '../data';
+import { CATEGORIES, HERO_IMAGE_URL, SERVICES } from '../data';
 import { ActiveTab, CategoryInfo, ServiceInfo } from '../types';
 
 interface HomeViewProps {
@@ -261,57 +261,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateToContact }) => {
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="w-full bg-white border-y border-[#e8e6dc] py-16 md:py-24">
-        <div className="max-w-[1200px] mx-auto px-5 md:px-20">
-          <div className="max-w-2xl mb-12">
-            <span className="font-sans-editorial text-xs uppercase tracking-widest text-[#7242be] font-semibold">
-              Rigor y Ejecución
-            </span>
-            <h2 className="font-sans-editorial text-2xl md:text-4xl font-medium text-[#141413] mt-2">
-              Proceso Metodológico
-            </h2>
-            <p className="font-serif text-sm md:text-base text-[#4a4452] mt-2">
-              Una estructura secuencial diseñada para mitigar observaciones técnicas y maximizar el puntaje de evaluación.
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-10 md:gap-12 relative max-w-3xl">
-            {METHOD_STEPS.map((step) => (
-              <div key={step.number} className="process-step flex items-start gap-5 relative z-10">
-                <div
-                  className={`process-line relative flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center font-sans-editorial text-xs font-semibold ${
-                    step.number === 1
-                      ? 'bg-[#8c5dd9] text-[#faf9f5]'
-                      : 'border border-[#8c5dd9] text-[#8c5dd9] bg-[#faf9f5]'
-                  }`}
-                >
-                  {step.number}
-                </div>
-                <div className="flex-grow">
-                  <h3 className="font-sans-editorial text-lg md:text-xl font-semibold text-[#141413]">
-                    {step.title}
-                  </h3>
-                  <p className="font-serif text-sm md:text-base text-[#4a4452] mt-1.5 leading-relaxed">
-                    {step.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {step.deliverables.map((deliv, idx) => (
-                      <span
-                        key={idx}
-                        className="bg-[#f0edeb] text-[#4a4452] text-[11px] font-sans-editorial px-2.5 py-0.5 rounded border border-[#e8e6dc]"
-                      >
-                        {deliv}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
