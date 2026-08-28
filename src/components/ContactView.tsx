@@ -9,45 +9,78 @@ interface ContactViewProps {
 
 const PROJECT_OPTIONS = [
   {
-    value: 'Consultoría Fondos No Reembolsables (PYMES y Startups).',
-    label: 'Consultoría Fondos No Reembolsables (PYMES y Startups).'
+    value: 'Digitalización (Hasta S/ 45,000 RNR)',
+    label: 'Digitalización (Hasta S/ 45,000 RNR)'
   },
   {
-    value: 'Creación de soluciones digitales - Software, websites.',
-    label: 'Creación de soluciones digitales - Software, websites.'
+    value: 'Certificación (Hasta S/ 45,000 o S/ 60,000 RNR)',
+    label: 'Certificación (Hasta S/ 45,000 o S/ 60,000 RNR)'
   },
   {
-    value: 'Escalamiento de presencia en redes sociales, marketing y publicidad.',
-    label: 'Escalamiento de presencia en redes sociales, marketing y publicidad.'
+    value: 'Innovación (S/ 200,000 a S/ 500,000 RNR)',
+    label: 'Innovación (S/ 200,000 a S/ 500,000 RNR)'
+  },
+  {
+    value: 'Diagnóstico y Elegibilidad',
+    label: 'Diagnóstico y Elegibilidad'
+  },
+  {
+    value: 'Formulación de Proyecto',
+    label: 'Formulación de Proyecto'
+  },
+  {
+    value: 'Postulación y Acompañamiento',
+    label: 'Postulación y Acompañamiento'
   }
 ];
 
 const getProjectTypeFromInitial = (initial: string) => {
   if (!initial) return '';
   const initialLower = initial.toLowerCase();
-  if (initialLower.includes('software') || initialLower.includes('digitales') || initialLower.includes('tecnología') || initialLower.includes('ti')) {
-    return 'Creación de soluciones digitales - Software, websites.';
+  if (initialLower.includes('digitalización') || initialLower.includes('digitalizacion')) {
+    return 'Digitalización (Hasta S/ 45,000 RNR)';
   }
-  if (initialLower.includes('marketing') || initialLower.includes('redes') || initialLower.includes('publicidad') || initialLower.includes('growth')) {
-    return 'Escalamiento de presencia en redes sociales, marketing y publicidad.';
+  if (initialLower.includes('certificación') || initialLower.includes('certificacion')) {
+    return 'Certificación (Hasta S/ 45,000 o S/ 60,000 RNR)';
   }
-  return 'Consultoría Fondos No Reembolsables (PYMES y Startups).';
+  if (initialLower.includes('innovación') || initialLower.includes('innovacion')) {
+    return 'Innovación (S/ 200,000 a S/ 500,000 RNR)';
+  }
+  if (initialLower.includes('diagnóstico') || initialLower.includes('diagnostico')) {
+    return 'Diagnóstico y Elegibilidad';
+  }
+  if (initialLower.includes('formulación') || initialLower.includes('formulacion')) {
+    return 'Formulación de Proyecto';
+  }
+  if (initialLower.includes('soporte') || initialLower.includes('postulación') || initialLower.includes('postulacion')) {
+    return 'Postulación y Acompañamiento';
+  }
+  return '';
 };
 
 const getMessageFromInitial = (initial: string) => {
   if (!initial) return '';
   const initialLower = initial.toLowerCase();
   
-  if (initialLower.includes('software') || initialLower.includes('digitales') || initialLower.includes('tecnología') || initialLower.includes('ti')) {
-    return 'Hola Medroa, deseo solicitar una cotización para el desarrollo de un proyecto de tecnología o software. Me gustaría coordinar una reunión de diagnóstico técnico.';
+  if (initialLower.includes('digitalización') || initialLower.includes('digitalizacion')) {
+    return 'Hola Medroa, deseo solicitar un diagnóstico para la postulación al fondo de Digitalización de proyectos.';
   }
-  if (initialLower.includes('marketing') || initialLower.includes('redes') || initialLower.includes('publicidad') || initialLower.includes('growth')) {
-    return 'Hola Medroa, me interesa recibir información sobre los servicios de marketing digital, publicidad y planes de growth hacking para escalar nuestras ventas.';
+  if (initialLower.includes('certificación') || initialLower.includes('certificacion')) {
+    return 'Hola Medroa, me interesa recibir información y evaluar la elegibilidad para certificar normas ISO o de calidad en mi empresa.';
+  }
+  if (initialLower.includes('innovación') || initialLower.includes('innovacion')) {
+    return 'Hola Medroa, me interesa postular o recibir asesoría técnica para formular un proyecto de Innovación y desarrollo tecnológico.';
   }
   if (initial.startsWith('Diagnóstico:')) {
     return `Hola Medroa, he completado el Evaluador Rápido de Elegibilidad y me interesa postular a fondos públicos. Los datos de mi perfil son: ${initial.replace('Diagnóstico:', '').trim()}.`;
   }
-  return `Hola Medroa, me interesa postular o recibir asesoría técnica para la convocatoria de fondos de: ${initial}.`;
+  if (initialLower.includes('diagnóstico') || initialLower.includes('diagnostico') || initialLower.includes('elegibilidad')) {
+    return 'Hola Medroa, me interesa coordinar una evaluación inicial de elegibilidad del perfil de mi empresa.';
+  }
+  if (initialLower.includes('formulación') || initialLower.includes('formulacion')) {
+    return 'Hola Medroa, necesito asesoramiento en la estructuración técnica y formulación de una postulación a fondos concursables.';
+  }
+  return `Hola Medroa, me interesa recibir consultoría para la convocatoria de fondos de: ${initial}.`;
 };
 
 export const ContactView: React.FC<ContactViewProps> = ({ initialProjectType = '' }) => {
@@ -258,36 +291,6 @@ export const ContactView: React.FC<ContactViewProps> = ({ initialProjectType = '
                 </div>
               </div>
 
-              {/* Project Type Select */}
-              <div className="flex flex-col relative group">
-                <label
-                  className="font-sans-editorial text-xs uppercase tracking-wider font-semibold text-[#4a4452] mb-2 transition-colors group-focus-within:text-[#2d628f]"
-                  htmlFor="project_type"
-                >
-                  Tipo de Proyecto
-                </label>
-                <div className="relative w-full">
-                  <select
-                    className="w-full bg-transparent border-b border-[#b0aea5] py-2 font-serif text-base text-[#141413] outline-none focus:border-[#2d628f] transition-colors appearance-none cursor-pointer rounded-none"
-                    id="project_type"
-                    name="project_type"
-                    value={formData.projectType}
-                    onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                  >
-                    <option value="" disabled className="bg-[#faf9f5] text-[#b0aea5]">
-                      Seleccione una opción
-                    </option>
-                    {PROJECT_OPTIONS.map((opt, idx) => (
-                      <option key={idx} value={opt.value} className="bg-[#faf9f5] text-[#141413]">
-                        {opt.label}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-[#b0aea5] group-focus-within:text-[#2d628f] transition-colors">
-                    ▼
-                  </div>
-                </div>
-              </div>
 
               {/* Message Textarea */}
               <div className="flex flex-col relative group">

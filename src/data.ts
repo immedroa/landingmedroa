@@ -8,46 +8,46 @@ export const PAPER_IMAGE_URL =
 
 export const SERVICES: ServiceInfo[] = [
   {
-    id: 'fondos',
+    id: 'diagnostico',
     icon: 'coins',
-    title: 'Captación de Fondos',
-    subtitle: 'Subsidios No Reembolsables',
-    description: 'Estructuramos, redactamos y postulamos proyectos a fondos concursables públicos para financiar el crecimiento de su negocio sin devolver un solo sol.',
+    title: 'Evaluación inicial del proyecto',
+    subtitle: 'DIAGNÓSTICO Y ELEGIBILIDAD',
+    description: 'Analizamos el perfil de tu empresa, el estado de tu iniciativa y el nivel de encaje con líneas de cofinanciamiento no reembolsable.',
     features: [
-      'Subsidios desde S/ 45,000 hasta S/ 500,000',
-      'Capital 100% no reembolsable (sin deuda ni acciones)',
-      'Acompañamiento integral hasta la rendición final'
+      'Revisión de elegibilidad.',
+      'Identificación de fondo o línea aplicable.',
+      'Detección de brechas técnicas y documentales.'
     ],
-    ctaText: 'Ver Categorías de Fondos',
-    prefillValue: 'Consultoría Fondos No Reembolsables (PYMES y Startups).'
+    ctaText: 'Solicitar evaluación',
+    prefillValue: 'Diagnóstico: Evaluación inicial del proyecto'
   },
   {
-    id: 'tecnologia',
+    id: 'formulacion',
     icon: 'code',
-    title: 'Tecnología e Ingeniería',
-    subtitle: 'Software a Medida & E-commerce',
-    description: 'Diseñamos y desarrollamos soluciones tecnológicas robustas que automatizan procesos y escalan operaciones comerciales de alta disponibilidad.',
+    title: 'Estructuración técnica de la postulación',
+    subtitle: 'FORMULACIÓN DE PROYECTO',
+    description: 'Convertimos tu necesidad empresarial en una propuesta clara, coherente y correctamente sustentada, con objetivos, actividades, cronograma, presupuesto e indicadores.',
     features: [
-      'Desarrollo de Software Web & Aplicaciones Móviles',
-      'Sistemas ERP, CRM y automatización de procesos',
-      'E-commerce avanzado y pasarelas de pago'
+      'Formulación narrativa y técnica.',
+      'Presupuesto y cronograma.',
+      'Ordenamiento documental.'
     ],
-    ctaText: 'Cotizar Proyecto de TI',
-    prefillValue: 'Creación de soluciones digitales - Software, websites.'
+    ctaText: 'Ver alcance',
+    prefillValue: 'Diagnóstico: Estructuración técnica de la postulación'
   },
   {
-    id: 'marketing',
+    id: 'acompanamiento',
     icon: 'marketing',
-    title: 'Marketing & Publicidad B2B',
-    subtitle: 'Escalamiento & Tracción Comercial',
-    description: 'Diseñamos y ejecutamos campañas de adquisición digital de alta rentabilidad para captar prospectos y posicionar marcas en mercados competitivos.',
+    title: 'Soporte durante el proceso',
+    subtitle: 'POSTULACIÓN Y ACOMPAÑAMIENTO',
+    description: 'Te acompañamos en la revisión final del expediente, la presentación de la postulación y la atención de observaciones vinculadas a la convocatoria.',
     features: [
-      'Estrategia de pauta publicitaria (Google & Meta Ads)',
-      'Generación de prospectos calificados (B2B Leads)',
-      'Posicionamiento y optimización de presencia de marca'
+      'Revisión final del expediente.',
+      'Acompañamiento durante la postulación.',
+      'Orientación inicial posterior, según alcance contratado.'
     ],
-    ctaText: 'Solicitar Plan de Growth',
-    prefillValue: 'Escalamiento de presencia en redes sociales, marketing y publicidad.'
+    ctaText: 'Agendar diagnóstico',
+    prefillValue: 'Diagnóstico: Soporte durante el proceso'
   }
 ];
 
@@ -56,72 +56,73 @@ export const CATEGORIES: CategoryInfo[] = [
     id: 'digitalizacion',
     icon: 'devices',
     title: 'Digitalización',
-    description:
-      'E-commerce, implementación de software especializado y transformación digital integral.',
+    description: 'Proyectos orientados a transformación digital, incorporación de herramientas tecnológicas y mejora de procesos empresariales.',
     highlight: 'Financia hasta el 70% del costo total sin dilución.',
-    examples: ['Sistemas ERP / CRM en la nube', 'Plataformas B2B / B2C e-commerce', 'Ciberseguridad y automatización'],
-    maxGrantEstimate: 'S/ 45,000'
+    examples: [
+      'Sistemas ERP o CRM en la nube.',
+      'Plataformas B2B o B2C e-commerce.',
+      'Ciberseguridad y automatización.'
+    ],
+    maxGrantEstimate: 'Hasta S/ 45,000 de cofinanciamiento RNR'
   },
   {
     id: 'certificacion',
     icon: 'verified',
     title: 'Certificación',
-    description:
-      'Normas ISO, certificaciones de calidad y estandarización de procesos operativos.',
-    highlight: 'Auditorías, consultorías de implementación y sellos internacionales.',
-    examples: ['ISO 9001 (Calidad)', 'ISO 27001 (Seguridad de Información)', 'HACCP / BPM / GlobalGAP'],
-    maxGrantEstimate: 'S/ 45,000'
+    description: 'Normas ISO, certificaciones de calidad y estandarización de procesos operativos.',
+    highlight: 'Certificaciones individuales o binormas: hasta S/ 45,000.00 de cofinanciamiento RNR. Certificaciones en trinorma: hasta S/ 60,000.00 de cofinanciamiento RNR.',
+    examples: [
+      'ISO 9001 (Calidad).',
+      'ISO 27001 (Seguridad de la Información).',
+      'HACCP / BPM / GlobalG.A.P.'
+    ],
+    maxGrantEstimate: 'Hasta S/ 45,000 o S/ 60,000 de cofinanciamiento RNR'
   },
   {
     id: 'innovacion',
     icon: 'lightbulb',
     title: 'Innovación',
-    description:
-      'Proyectos de Investigación y Desarrollo (I+D), creación de nuevos productos y validación comercial.',
+    description: 'Proyectos orientados a investigación, desarrollo, validación técnica o comercial y creación de nuevos productos, servicios o soluciones.',
     highlight: 'Fondos concursables de alto impacto para prototipos y scale-ups.',
-    examples: ['Desarrollo de nuevo hardware/software', 'Validación clínica o técnica', 'Ensayos de laboratorio y patentes'],
-    maxGrantEstimate: 'S/ 200,000 - S/ 500,000'
-  },
-  {
-    id: 'economia-circular',
-    icon: 'recycling',
-    title: 'Economía Circular',
-    description:
-      'Sostenibilidad, eficiencia energética y modelos de negocio de impacto ambiental positivo.',
-    highlight: 'Líneas preferentes orientadas a descarbonización y valorización.',
-    examples: ['Eficiencia energética y solar', 'Revalorización de mermas y residuos', 'Ecodiseño y bioempaques'],
-    maxGrantEstimate: 'Hasta S/ 500,000'
+    examples: [
+      'Desarrollo de nuevo hardware o software.',
+      'Validación clínica o técnica.',
+      'Ensayos de laboratorio y patentes.'
+    ],
+    maxGrantEstimate: 'S/ 200,000 a S/ 500,000'
   }
 ];
 
 export const METHOD_STEPS: MethodStep[] = [
   {
     number: 1,
-    title: 'Diagnóstico',
-    description:
-      'Evaluamos las necesidades de su empresa, la viabilidad técnica del desarrollo de TI o la elegibilidad para fondos concursables.',
-    deliverables: ['Scoring preliminar de viabilidad', 'Propuesta técnica comercial', 'Checklist documental y de requisitos']
+    title: 'Diagnóstico inicial',
+    description: 'Revisamos tu empresa, tu proyecto y la convocatoria más adecuada.',
+    deliverables: []
   },
   {
     number: 2,
-    title: 'Estrategia',
-    description:
-      'Diseñamos el plan de acción, la arquitectura de software, la estrategia de marketing o la formulación y presupuesto del proyecto.',
-    deliverables: ['Roadmap del proyecto e hitos', 'Presupuesto justificado', 'Arquitectura técnica / Plan de pauta']
+    title: 'Evaluación de elegibilidad',
+    description: 'Detectamos requisitos, brechas y viabilidad de postulación.',
+    deliverables: []
   },
   {
     number: 3,
-    title: 'Ejecución',
-    description:
-      'Desarrollamos las soluciones de TI, implementamos campañas de marketing o postulamos a los fondos concursables con máximo rigor.',
-    deliverables: ['Código fuente / Postulación cargada', 'Configuración de pauta y anuncios', 'Entregables técnicos mensuales']
+    title: 'Formulación del proyecto',
+    description: 'Ordenamos la propuesta técnica, documental y presupuestal.',
+    deliverables: []
   },
   {
     number: 4,
-    title: 'Éxito & Cumplimiento',
-    description:
-      'Acompañamos en el despliegue comercial, la optimización continua de campañas o la rendición financiera y técnica ante entes gubernamentales.',
-    deliverables: ['Mantenimiento y soporte técnico', 'Optimización de ROI y conversiones', 'Informes de cierre y desembolsos']
+    title: 'Postulación acompañada',
+    description: 'Te asistimos en la presentación y revisión final del expediente.',
+    deliverables: []
+  },
+  {
+    number: 5,
+    title: 'Seguimiento orientativo',
+    description: 'Te guiamos ante observaciones o en la etapa inicial de ejecución, según el alcance contratado.',
+    deliverables: []
   }
 ];
 

@@ -21,8 +21,25 @@ export default function App() {
     if (category) {
       setPrefillProject(category);
     }
-    setActiveTab('contacto');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setActiveTab('inicio');
+    setTimeout(() => {
+      const el = document.getElementById('contacto');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
+  const handleNavigateToSection = (sectionId: string) => {
+    setActiveTab('inicio');
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   const handleTabChange = (tab: ActiveTab) => {
@@ -33,7 +50,17 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-[#faf9f5] text-[#141413] font-serif antialiased selection:bg-[#8c5dd9] selection:text-[#faf9f5]">
       {/* Top App Bar Navigation */}
-      <Header activeTab={activeTab} onSelectTab={handleTabChange} />
+      <Header
+        activeTab={activeTab}
+        onSelectTab={(tab) => {
+          if (tab === 'contacto') {
+            handleNavigateToContact();
+          } else {
+            handleTabChange(tab);
+          }
+        }}
+        onNavigateToSection={handleNavigateToSection}
+      />
 
       {/* Main View Transition */}
       <div className="flex-grow flex flex-col w-full">
@@ -41,11 +68,8 @@ export default function App() {
           <HomeView
             onNavigateToContact={handleNavigateToContact}
             onNavigateToTab={handleTabChange}
+            prefillProject={prefillProject}
           />
-        )}
-
-        {activeTab === 'contacto' && (
-          <ContactView initialProjectType={prefillProject} />
         )}
 
         {activeTab === 'terminos' && (
