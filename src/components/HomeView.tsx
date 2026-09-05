@@ -79,7 +79,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateToContact, prefill
             }}
             className="inline-flex items-center justify-center bg-[#8c5dd9] text-[#faf9f5] px-6 py-3.5 rounded font-sans-editorial text-xs uppercase tracking-wider font-semibold hover:bg-[#7242be] transition-colors cursor-pointer text-center border-none"
           >
-            Explorar servicios
+            Explorar líneas de fondos
           </button>
           <button
             onClick={() => handleStartConsultation()}
@@ -102,77 +102,44 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateToContact, prefill
             loading="eager"
           />
           <div className="absolute bottom-4 right-4 bg-[#faf9f5]/90 backdrop-blur-sm px-3 py-1.5 rounded border border-[#e8e6dc] text-[11px] font-sans-editorial font-medium text-[#4a4452]">
-            Convocatorias 2026
+            Convocatorias Vigentes
           </div>
         </div>
       </section>
 
-      {/* Services Pillars Section */}
-      <section className="w-full bg-[#f6f3f1] border-y border-[#e8e6dc] py-16 md:py-24" id="servicios">
+      {/* Synthesized Services Bar */}
+      <section className="w-full bg-[#f6f3f1] border-y border-[#e8e6dc] py-10 md:py-12" id="servicios">
         <div className="max-w-[1200px] mx-auto px-5 md:px-20">
-          <div className="text-center mb-12">
-            <span className="font-sans-editorial text-xs uppercase tracking-widest text-[#8c5dd9] font-semibold">
-              Servicios especializados
-            </span>
-            <h2 className="font-sans-editorial text-3xl md:text-4xl font-medium text-[#141413] mt-2">
-              Nuestros servicios para postular a fondos no reembolsables
-            </h2>
-            <p className="font-serif text-base text-[#4a4452] mt-4 max-w-2xl mx-auto leading-relaxed">
-              Te acompañamos desde la evaluación inicial hasta la presentación de una postulación bien sustentada, alineada con los requisitos de cada convocatoria.
-            </p>
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-[#faf9f5] border border-[#e8e6dc] rounded p-5 flex items-start gap-4 hover:border-[#8c5dd9] transition-all">
+              <div className="p-3 bg-[#ecdcff] rounded text-[#7242be] flex-shrink-0">
+                <Coins className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-sans-editorial text-sm font-bold text-[#141413]">Diagnóstico y Elegibilidad</h3>
+                <p className="font-serif text-xs text-[#4a4452] mt-1 leading-relaxed">Evaluación del perfil empresarial y nivel de encaje con fondos.</p>
+              </div>
+            </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {SERVICES.map((srv) => (
-              <article
-                key={srv.id}
-                className="bg-[#faf9f5] border border-[#e8e6dc] rounded p-6 md:p-8 flex flex-col justify-between hover:border-[#8c5dd9] transition-all duration-300 hover:shadow-[0_8px_30px_-15px_rgba(140,93,217,0.15)] group relative overflow-hidden"
-              >
-                <div>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3.5 bg-[#e8e6dc]/50 rounded-lg group-hover:bg-[#ecdcff] group-hover:text-[#7242be] transition-colors text-[#141413]">
-                      {getServiceIcon(srv.icon)}
-                    </div>
-                    <div>
-                      <span className="text-[11px] font-sans-editorial font-bold text-[#8c5dd9] uppercase tracking-wider block">
-                        {srv.subtitle}
-                      </span>
-                      <h3 className="font-sans-editorial text-lg font-bold text-[#141413] group-hover:text-[#7242be] transition-colors">
-                        {srv.title}
-                      </h3>
-                    </div>
-                  </div>
+            <div className="bg-[#faf9f5] border border-[#e8e6dc] rounded p-5 flex items-start gap-4 hover:border-[#8c5dd9] transition-all">
+              <div className="p-3 bg-[#ecdcff] rounded text-[#7242be] flex-shrink-0">
+                <Code className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-sans-editorial text-sm font-bold text-[#141413]">Formulación de Proyecto</h3>
+                <p className="font-serif text-xs text-[#4a4452] mt-1 leading-relaxed">Estructuración técnica, propuesta narrativa y presupuesto.</p>
+              </div>
+            </div>
 
-                  <p className="font-serif text-sm text-[#4a4452] leading-relaxed mb-6">
-                    {srv.description}
-                  </p>
-
-                  <div className="space-y-3 mb-8 border-t border-[#e8e6dc] pt-6">
-                    <p className="font-sans-editorial text-xs font-semibold text-[#141413] uppercase tracking-wider">
-                      ¿Qué incluye?
-                    </p>
-                    <ul className="text-xs font-serif text-[#4a4452] space-y-2.5">
-                      {srv.features.map((feat, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-[#8c5dd9] flex-shrink-0 mt-0.5" />
-                          <span>{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-[#e8e6dc]">
-                  <button
-                    onClick={() => handleServiceAction(srv)}
-                    className="w-full inline-flex items-center justify-center bg-[#141413] text-[#faf9f5] py-3 rounded font-sans-editorial text-xs uppercase tracking-wider font-semibold hover:bg-[#8c5dd9] transition-all cursor-pointer shadow-sm group border-none"
-                  >
-                    <span>{srv.ctaText}</span>
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
-              </article>
-            ))}
+            <div className="bg-[#faf9f5] border border-[#e8e6dc] rounded p-5 flex items-start gap-4 hover:border-[#8c5dd9] transition-all">
+              <div className="p-3 bg-[#ecdcff] rounded text-[#7242be] flex-shrink-0">
+                <Target className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-sans-editorial text-sm font-bold text-[#141413]">Postulación y Acompañamiento</h3>
+                <p className="font-serif text-xs text-[#4a4452] mt-1 leading-relaxed">Revisión y soporte durante la presentación del expediente.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -313,7 +280,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigateToContact, prefill
       {/* Final CTA Section */}
       <section className="w-full max-w-[1200px] mx-auto px-5 md:px-20 py-20 md:py-28 flex flex-col items-center text-center">
         <h2 className="font-sans-editorial text-2xl md:text-4xl font-semibold text-[#141413] max-w-[90%] md:max-w-2xl mb-4 tracking-tight">
-          Cupos limitados por convocatoria.
+          Evaluamos la factibilidad de tu empresa.
         </h2>
         <p className="font-serif text-base md:text-lg text-[#4a4452] max-w-xl mb-8 leading-relaxed">
           Reserva tu diagnóstico estructural hoy y asegura una postulación competitiva con asesoría editorial personalizada.

@@ -197,10 +197,10 @@ export const ContactView: React.FC<ContactViewProps> = ({ initialProjectType = '
         <h1 className="font-sans-editorial text-3xl md:text-5xl font-semibold text-[#141413] tracking-tight mb-6">
           Contáctanos
         </h1>
-        {/* Academic Quote / Urgency Message */}
+        {/* Requisito / Urgency Message */}
         <div className="border-l-[3px] border-[#8c5dd9] pl-6 py-2 my-6">
           <p className="font-serif text-lg md:text-xl italic text-[#141413] opacity-90">
-            Cupos limitados para la convocatoria actual (Agosto 2026)
+            Revisamos convocatorias vigentes según tu proyecto
           </p>
         </div>
       </div>
@@ -440,7 +440,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ initialProjectType = '
             <img
               className="object-cover w-full h-full opacity-90 mix-blend-multiply"
               src={PAPER_IMAGE_URL}
-              alt="Pliegues de papel arquitectónico minimalista"
+              alt="Medroa Consultoría"
               loading="lazy"
             />
           </div>
