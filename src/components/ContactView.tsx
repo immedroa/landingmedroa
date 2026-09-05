@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MessageSquare, Mail, Calendar, CheckCircle, ArrowRight } from 'lucide-react';
 import { DIRECT_CHANNELS, PAPER_IMAGE_URL } from '../data';
 import { ContactFormData } from '../types';
+import { supabase } from '../supabaseClient';
 
 interface ContactViewProps {
   initialProjectType?: string;
@@ -113,27 +114,64 @@ export const ContactView: React.FC<ContactViewProps> = ({ initialProjectType = '
     setSubmitError(null);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      let apiSuccess = false;
+      let apiErrorMsg = '';
 
-      if (!response.ok) {
-        throw new Error('No se pudo procesar la solicitud en el servidor. Por favor intente de nuevo.');
+      // 1. Intentar vía /api/contact (Cloudflare Function / Express)
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const resData = await response.json().catch(() => null);
+
+        if (response.ok && resData?.success) {
+          apiSuccess = true;
+        } else {
+          apiErrorMsg = resData?.error || resData?.message || `Error en el servidor (${response.status}).`;
+        }
+      } catch (fetchErr: any) {
+        apiErrorMsg = fetchErr.message || 'Error al conectar con la API del servidor.';
       }
 
-      const resData = await response.json();
-      if (resData.success) {
+      if (apiSuccess) {
         setIsSubmitted(true);
-      } else {
-        throw new Error(resData.error || 'Ocurrió un error inesperado al guardar los datos.');
+        return;
       }
+
+      // 2. Fallback: Si la API falló (ej. 404 en hosting estático sin funciones), intentar Supabase directo desde el cliente
+      if (supabase) {
+        const { data, error } = await supabase
+          .from('contacts')
+          .insert([
+            {
+              name: formData.name,
+              email: formData.email,
+              phone: formData.phone || null,
+              company: formData.company || null,
+              project_type: formData.projectType || null,
+              message: formData.message
+            }
+          ])
+          .select();
+
+        if (error) {
+          throw new Error(`Error al guardar en Supabase: ${error.message}`);
+        }
+
+        setIsSubmitted(true);
+        return;
+      }
+
+      // 3. Si ambos fallaron, lanzar el mensaje de error
+      throw new Error(apiErrorMsg || 'No se pudo procesar la solicitud en el servidor. Por favor intente de nuevo.');
     } catch (err: any) {
       console.error('Error submitting form:', err);
-      setSubmitError(err.message || 'Error de conexión. Asegúrese de que el servidor backend esté corriendo.');
+      setSubmitError(err.message || 'Error de conexión.');
     } finally {
       setIsSending(false);
     }
@@ -392,7 +430,7 @@ export const ContactView: React.FC<ContactViewProps> = ({ initialProjectType = '
                 Agendar Reunión
               </h3>
               <p className="font-serif text-sm text-[#4a4452] group-hover:text-[#8c5dd9] transition-colors duration-300">
-                {DIRECT_CHANNELS.calendar.url}
+                {DIRECT_CHANNELS.calendar.label}
               </p>
             </div>
           </a>

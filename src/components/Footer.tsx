@@ -108,10 +108,10 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab, activeTab }) => {
           </nav>
         </div>
 
-        {/* Architectural Motto */}
+        {/* Company Summary */}
         <div className="flex flex-col justify-start">
-          <p className="font-sans-editorial text-sm text-[#4a4452] leading-relaxed italic border-l-2 border-[#b0aea5] pl-3">
-            Diseño enfocado en la claridad intelectual y la permanencia arquitectónica.
+          <p className="font-sans-editorial text-sm text-[#4a4452] leading-relaxed italic border-l-2 border-[#8c5dd9] pl-3">
+            Asesoría técnica y estratégica para la postulación a fondos de cofinanciamiento no reembolsable.
           </p>
         </div>
       </div>

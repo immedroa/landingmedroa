@@ -136,8 +136,8 @@ export const DIRECT_CHANNELS = {
     link: 'mailto:medroavargas@gmail.com?subject=Consulta%20Fondos%20No%20Reembolsables%20-%20Medroa'
   },
   calendar: {
-    url: 'cal.com/marcelo-medroa',
-    link: 'https://cal.com/marcelo-medroa/30min'
+    label: 'Seleccionar fecha y hora',
+    link: 'https://calendar.app.google/KM76Txgz1kS2LZNPA'
   }
 };
 
